@@ -1,0 +1,77 @@
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>The 2013 Tour of Galena: {{ field.full }} {{ race.full }} results</title>
+
+<?php require "../includes/inside-header.php" ?>
+
+
+<h1>{{ field.full }} {{ race.full }} results</h1>
+<p class="updated">Last updated: {{ time }}</p>
+
+<p><a href="omnium-{{ field.slug }}.php">Omnium results for this field </a></p>
+<p class="desktop-only"><a href="{{ race.slug }}-{{field.slug}}-print.php" class="btn"><i class="icon-print"></i> Printer-friendly version</a></p>
+
+<table id="results" class="table-striped">
+	<thead>
+		<tr>
+		<th class="place">Place</th>
+
+		<th class="name">Name</th>
+		<th class="name">Team</th>
+		<!--
+		{% ifequal race.slug "tt" %}
+			<th class="name">Time</th>
+		{% endifequal %}
+		-->
+		<th>In omnium</th>
+		</tr>
+	</thead>
+	<tbody>
+
+	{% for result in results %}
+	<tr>
+		<td class="place">
+			{{ result.place|upper }}
+		</td>
+
+		<td class="name">
+			{% if result.usac %}
+				<a href="http://www.usacycling.org/results/index.php?compid={{ result.usac}}">{{ result.fname }} {{result.lname }}</a>
+			{% else %}
+				{{ result.fname }} {{ result.lname }}
+			{% endif %}
+
+
+		</td>
+		<td class="team">
+			{{ result.team }}
+		</td>
+		<!--
+		{% ifequal race.slug "tt" %}
+		<td class="team">
+			{% if result.tt_time %}
+				{{ result.tt_time}}
+			{% endif %}
+		</td>
+
+		{% endifequal %}
+		-->
+		<td>{% if result.in_omnium %}<i class="icon-ok-circle"></i>{% endif %}</td>
+	</tr>
+
+	{% empty %}
+
+	<tr><td colspan="5">No matching riders</td></tr>
+
+	{% endfor %}
+
+	</tbody>
+</table>
+
+
+
+<?php require '../includes/inside-footer.php' ?>

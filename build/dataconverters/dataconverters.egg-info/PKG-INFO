@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: dataconverters
+Version: 0.3
+Summary: Data conversion python library and command line tool
+Home-page: https://github.com/okfn/dataconverters/
+Author: Open Knowledge Foundation (Nigel Babu, Rufus Pollock, Dominik Moritz)
+Author-email: okfn-labs@lists.okfn.org
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN

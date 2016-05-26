@@ -1,0 +1,67 @@
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>The 2013 Tour of Galena: {{ field.full }} omnium results</title>
+
+<link rel="stylesheet" type="text/css" href="../css/galena.css">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+
+</head>
+<body>
+	<div class="print container">
+
+<img src="../img/logo-bw-500-156.jpg" height="78" width="250" alt="2012 Tour of Galena">
+
+
+	<h1>{{ race.full }}</h1>
+	<h2>{{ field.full }}</h2>
+<p class="updated">Last updated: {{ time }}</p>
+
+
+
+<table id="results" class="table">
+	<thead>
+		<tr>
+		<th class="place">Place</th>
+		<th class="name">Name</th>
+		<th class="name">Team</th>
+		<th>In omnium</th>
+		</tr>
+	</thead>
+	<tbody>
+
+	{% for result in results %}
+	<tr>
+		<td class="place">
+			{{ result.place|upper }}
+		</td>
+		<td class="name">
+			{% if result.usac %}
+				<a href="http://www.usacycling.org/results/index.php?compid={{ result.usac}}">{{ result.fname }} {{result.lname }}</a>
+			{% else %}
+				{{ result.fname }} {{ result.lname }}
+			{% endif %}
+
+
+		</td>
+		<td class="team">
+			{{ result.team }}
+		</td>
+		<td>{% if result.in_omnium %}X{% endif %}</td>
+	</tr>
+
+	{% empty %}
+
+	<tr><td colspan="5">No matching riders</td></tr>
+
+	{% endfor %}
+
+	</tbody>
+</table>
+
+</div>
+</body>
+</html>

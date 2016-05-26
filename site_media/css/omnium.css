@@ -1,0 +1,89 @@
+body {
+  padding-top: 80px;
+}
+.updated {
+  font-family: 'PTSansItalic';
+  font-size: .9em;
+}
+li {
+  line-height: 1.9 !important;
+}
+h1 {
+  margin-bottom: 15px;
+}
+#field th {
+  text-align: left;
+  padding-left: 0;
+}
+#field input {
+  width: 60px;
+  height: 50px;
+  text-align: center;
+  font-family: 'PTSansBold';
+  font-size: 1.8em;
+  color: #9d261d;
+}
+#field input.empty {
+  color: #eeeeee;
+}
+#field td {
+  padding: 5px 30px 5px 0;
+  font-size: .9em;
+  color: #555555;
+}
+#field td b {
+  font-size: 1.5em;
+  color: #222222;
+}
+#field td b span {
+  color: #999999;
+}
+#field td.omnium {
+  font-size: 2em;
+  font-family: 'PTSansBold';
+  vertical-align: middle;
+}
+.memo {
+  margin-bottom: 20px;
+}
+#addriders textarea, #addresults textarea {
+  width: 800px;
+}
+#addriders select, #addresults select {
+  height: 2em;
+  color: #222222;
+  font-size: 1.5em;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  background-color: #eeeeee;
+  color: #000000;
+  margin-top: 40px;
+}
+#addriders select option, #addresults select option {
+  padding: 5px 0;
+  font-size: .8em;
+}
+.navbar ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+.navbar .caret {
+  border-top: 4px solid #ffffff;
+}
+.navbar li {
+  float: left;
+  padding: 5px 80px 5px 0;
+}
+.navbar li a, .navbar li a:hover {
+  color: white;
+}
+.navbar li li {
+  padding: 5px;
+  width: 100%;
+}
+.navbar li li a, .navbar li li a:hover {
+  color: #222222;
+}
+.navbar li li a:hover {
+  background-color: #eeeeee;
+}

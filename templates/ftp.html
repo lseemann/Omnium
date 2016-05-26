@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Files uploaded{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+{% if error %}
+
+<h1>Upload failed!</h1>
+<p>You're probably not connected to the internet.</p>
+
+{% else %}
+<h1>Files uploaded</h1>
+{% endif %}
+
+<div class="btn-group">
+<a href="/" class="btn-success btn">Go home</a>
+
+</div>
+
+</div>
+
+{% endblock %}

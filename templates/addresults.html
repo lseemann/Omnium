@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Add results{% endblock %}
+
+{% block content %}
+
+
+<div id="addresults" class="container">
+
+<div class="row">
+	<div class="span6">
+
+		{% if successes %}
+		<h3>Successful entries</h3>
+			<ul>{{ successes|safe }}</ul>
+		{% endif %}
+	</div>
+
+	<div class="span6">
+
+		{% if errors %}
+		<h3>Possible errors</h3>
+			<ul>{{ errors|safe }}</ul>
+		{% endif %}
+	</div>
+
+
+</div>
+
+<h1>Add results</h1>
+
+<form action="" method="post" enctype="multipart/form-data">
+
+<p>This form will create results or overwrite existing results. Do not upload partial results. Only update with the most complete available results.</p>
+<p>The key is that the top row of the csv must have the following exact fields:</p>
+<table style="width: 100%;"><tr style="font-size: .8em;">
+	<td>FIRST NAME</td>
+		<td>LAST NAME</td>
+			<td>CATEGORY ENTERED</td>
+				<td>USAC LICENSE</td>
+				<td>Team</td>
+					<td> Place</td></tr></table>
+					<br>
+<p>Also, fields must match the following exactly:</p>
+<table style="width: 100%;"><tr style="font-size: .8em;">
+	{% for field in fields %}
+	<td>{{field}}</td>
+	{% endfor %}
+</tr></table>
+
+<select name="race">
+	<option value='--'>Select race</option>
+	<option value="cr">Circuit race</option>
+	<option value="tt">Time trial</option>
+	<option value="rr">Road race</option>
+	<option value="crit">Criterium</option>
+	<option value="sprint">Mid-crit sprint</option>
+</select>
+
+<br>
+
+<p>Locate the CSV file with the results.</p>
+<input type="file" name="csvfile" id="id_csvfile" />
+<br>
+<input type="submit" class="btn btn-success btn-large" value="Submit these results">
+
+</form>
+
+</div>
+
+{% endblock %}

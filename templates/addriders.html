@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Add rider to the omnium{% endblock %}
+
+
+{% block extra_javascript %}
+{% endblock %}
+
+
+{% block content %}
+	
+	
+<div id="addriders" class="container">	
+
+
+<h1>Add riders to the omnium</h1>
+<p>Only use this form to add riders eligible for the omnium.</p>
+<b>Format:</b> fname,lname,team,usac<br>
+
+<form action="" method="post">
+		
+<select name="field">
+	<option value="">Select field</option>
+{% for field in fields %}
+	<option value="{{field.slug}}">{{ field.full }}</option>
+{% endfor %}
+</select>
+
+
+
+<textarea name="newriders" cols="80" rows="10"></textarea>
+<br>
+<input type="submit" class="btn btn-success btn-large" value="Add these riders">
+
+</form>
+
+
+<div class="row">
+	<div class="span6">
+		{% if successes %}
+		<h3>Successful entries</h3>
+		
+			<ul>{{ successes|safe }}</ul>
+
+		{% endif %}
+	</div>
+		
+	<div class="span6">
+		{% if errors %}
+		<h3>Failures</h3>
+		
+			<ul>{{ errors|safe }}</ul>
+		{% endif %}
+	</div>
+
+
+</div>
+</div>
+{% endblock %}

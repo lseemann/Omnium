@@ -1,0 +1,97 @@
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>The 2013 Tour of Galena: {{ field.full }} omnium results</title>
+
+<link rel="stylesheet" type="text/css" href="../css/galena.css">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+
+</head>
+<body>
+	<div class="print container">
+
+<img src="../img/logo-bw-500-156.jpg" height="78" width="250" alt="2012 Tour of Galena">
+
+
+	<h1>Omnium</h1>
+	<h2>{{ field.full }}</h2>
+<p class="updated">Last updated: {{ time }}</p>
+
+
+
+<table id="results" class="table">
+	<thead>
+		<tr>
+		<th class="place">Place</th>
+		<th class="name">Name</th>
+
+		{% if elite %}
+			<th><a href="cr-{{field.slug}}-print.php">CR</a></th>
+		{% endif %}
+		<th><a href="tt-{{field.slug}}-print.php">TT</a></th>
+		<th><a href="rr-{{field.slug}}-print.php">RR</a></th>
+		<th><a href="crit-{{field.slug}}-print.php">Crit</a></th>
+		<th>Mid-crit sprint</th>
+		<th>Omnium</th>
+		</tr>
+	</thead>
+	<tbody>
+
+	{% for rider in riders %}
+	<tr>
+		<td class="place">
+			{{ rider.place }}
+		</td>
+		<td class="name">
+			{% if rider.usac %}
+				<a href="http://www.usacycling.org/results/index.php?compid={{ rider.usac }}">{{ rider }}</a>
+			{% else %}
+				{{ rider }}
+			{% endif %}
+			<br>
+			<span>
+				{{ rider.team }}&nbsp;
+			</span>
+		</td>
+		{% if elite %}
+			<td>
+				{{ rider.cr_points}}<br>
+				<span>{{ rider.cr_place }}</span>
+			</td>
+		{% endif %}
+		<td>
+			{{ rider.tt_points}}<br>
+			<span>{{ rider.tt_place }}</span>
+		</td>
+		<td>
+			{{ rider.rr_points}}<br>
+			<span>{{ rider.rr_place }}</span>
+		</td>
+		<td>
+			{{ rider.crit_points}}<br>
+			<span>{{ rider.crit_place }}</span>
+		</td>
+				<td>
+			{{ rider.sprint_points}}<br>
+			<span>{{ rider.sprint_place }}</span>
+		</td>
+		<td class="omnium">
+			{{ rider.omnium }}
+		</td>
+
+	</tr>
+
+	{% empty %}
+
+	<tr><td colspan="5">No matching riders</td></tr>
+
+	{% endfor %}
+
+	</tbody>
+</table>
+</div>
+</body>
+</html>

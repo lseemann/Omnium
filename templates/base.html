@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+
+	<link rel="stylesheet" type="text/css" href="/media/css/galena.css">
+	<link rel="stylesheet" type="text/css" href="/media/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/media/css/omnium.css">
+
+
+
+</head>
+<body>
+	<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+    <div class="container">
+    	<ul>
+			<li><a href="/">Home</a>
+			<li><a href="/addriders">Add riders</a>
+			<li><a href="/addresults">Add results</a>
+			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit omnium results <b class="caret"></b></a>
+
+				<ul class="dropdown-menu">
+					{% for field in fields %}
+						<li> <a href="/field/{{ field.slug}}">{{ field.full }}</a>
+					{% endfor %}
+				</ul>
+				</li>
+
+
+		</ul>
+    </div>
+    </div>
+    </div>
+
+{% block content %}
+{% endblock %}
+
+
+<script src="/Galena2013/js/jquery.min.js"></script>
+<script src="/Galena2013/js/bootstrap-dropdown.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+	$('input').keyup(function() {
+		if ($(this).val() != "") {
+			$(this).removeClass('empty')
+		}
+		});
+
+	});
+</script>
+
+</body>
+</html>

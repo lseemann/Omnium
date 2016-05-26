@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Edit {{ thisField.full }} results{% endblock %}
+
+{% block content %}
+
+<div id="editfield" class="container">
+
+{% if memo %}
+	<p class="memo btn btn-danger btn-large">{{ memo|safe }}</p>
+{% endif %}
+
+<h1>Edit results for {{ thisField.full }}</h1>
+<p>Note that this form only affects the results associated for each omnium participant. <a href="/admin">Go to the admin page</a> to manually correct any individual results.</p>
+<form action="" method="post">
+<input type="submit" class="btn btn-success btn-large" value="Save changes" style="width: 100%">
+<table id="field" class="table">
+	<thead>
+		<tr>
+			<th>Rider</th>
+			{% if elite %}<th>CR place</th>{% endif %}
+			<th>TT place</th>
+			<th>RR place</th>
+			<th>Crit place</th>
+			<th>Mid-crit sprint</th>
+			<th>Omnium points</th>
+
+
+	</thead>
+
+{% for rider in riders %}
+	<tr>
+		<td>
+			<b>{{ rider.lname }}, <span>{{ rider.fname }}</span></b><br>
+			{{ rider.team }}<br>
+			{{ rider.usac }}
+		</td>
+
+{% if elite %}
+		<td>
+			<input type="text" value="{% if rider.cr_place %}{{rider.cr_place}}{% else %}{% endif %}" id ="{{rider.usac}}#cr_place" name="{{rider.usac}}#cr_place" {% ifequal rider.cr_place 999 %}class="empty"{% endifequal %}><br>
+			{{ rider.cr_points }} point{{ rider.cr_points|pluralize }}
+		</td>
+{% endif %}
+		<td>
+			<input type="text" value="{% if rider.tt_place %}{{rider.tt_place}}{% else %}{% endif %}" name="{{rider.usac}}#tt_place" {% ifequal rider.tt_place 999 %}class="empty"{% endifequal %}><br>
+			{{ rider.tt_points }} point{{ rider.tt_points|pluralize }}
+		</td>
+
+		<td>
+			<input type="text" value="{% if rider.rr_place %}{{rider.rr_place}}{% else %}{% endif %}" name="{{rider.usac}}#rr_place" {% ifequal rider.rr_place 999 %}class="empty"{% endifequal %}><br>
+			{{ rider.rr_points }} point{{ rider.rr_points|pluralize }}
+		</td>
+
+		<td>
+			<input type="text" value="{% if rider.crit_place %}{{rider.crit_place}}{% else %}{% endif %}" name="{{rider.usac}}#crit_place" {% ifequal rider.crit_place 999 %}class="empty"{% endifequal %}><br>
+			{{ rider.crit_points }} point{{ rider.crit_points|pluralize }}
+		</td>
+		<td>
+			<input type="text" value="{% if rider.sprint_place %}{{rider.sprint_place}}{% else %}{% endif %}" name="{{rider.usac}}#sprint_place" {% ifequal rider.sprint_place 999 %}class="empty"{% endifequal %}><br>
+			{{ rider.sprint_points }} point{{ rider.sprint_points|pluralize }}
+		</td>
+
+		<td class="omnium">
+			{{ rider.omnium }}
+		</td>
+
+	</tr>
+
+{% empty %}
+	<tr>
+		<td>No riders in this field.</td>
+	</tr>
+
+{% endfor %}
+
+</table>
+<input type="submit" class="btn btn-success btn-large" value="Save changes" style="width: 100%">
+</form>
+</div>
+
+
+
+{% endblock %}

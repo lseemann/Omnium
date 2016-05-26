@@ -1,0 +1,14 @@
+setup.cfg
+dataconverters/__init__.py
+dataconverters/cli.py
+dataconverters/commas.py
+dataconverters/jsondata.py
+dataconverters/kml.py
+dataconverters/shp.py
+dataconverters/tesseract.py
+dataconverters/xls.py
+pip-egg-info/dataconverters.egg-info/PKG-INFO
+pip-egg-info/dataconverters.egg-info/SOURCES.txt
+pip-egg-info/dataconverters.egg-info/dependency_links.txt
+pip-egg-info/dataconverters.egg-info/entry_points.txt
+pip-egg-info/dataconverters.egg-info/top_level.txt

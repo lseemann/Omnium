@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Tour of Galena omnium results engine{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+<h1>What would you like to do?</h1>
+
+<div class="btn-group" style="margin-bottom: 20px;">
+<a href="addriders" class="btn-success btn btn-large">Add riders to omnium</a>
+
+<a href="addresults" class="btn-success btn btn-large">Add results</a>
+
+
+<a href="field/mp" class="btn-success btn btn-large">Edit results</a>
+
+
+<a href="save" class="btn-success btn btn-large">Save local files</a>
+
+
+<a href="ftp" class="btn-success btn btn-large">Upload files to server</a>
+
+</div>
+
+<h3>Things to remember</h3>
+<ul>
+	<li>When adding riders, only add riders eligible for the omnium.
+<li>The system presumes riders will be entered in only one omnium.
+<li>It is required that each omnium rider have a unique USAC number. In the unlikely event of a day-of omnium registrant, work with Jason to create an unique identifier.
+	
+<li>If omnium placings are edited manually, the individual race results will not reflect that change. Re-import the CSV or edit through the admin.
+	
+<li>Before the race, double-check with Jason to ensure standard headers and field names.
+</ul>
+</div>
+
+{% endblock %}

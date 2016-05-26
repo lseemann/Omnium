@@ -1,0 +1,6 @@
+{{ field.full }} omnium results
+Update: {{ time }}
+
+{% for rider in riders %}
+{{ rider.place }}. {{ rider }} ({{rider.team}}) {{ rider.usac }}, {{ rider.omnium}} points
+{% endfor %}
